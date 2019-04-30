@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Indonesia Kita</title>
+	<link rel="stylesheet" href="css/onsenui.css">
+	<link rel="stylesheet" href="css/onsen-css-components.min.css">
+	<script src="js/onsenui.min.js"></script>
+</head>
+<body>
+	<ons-navigtor>
+	<ons-splitter>
+		<ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+			<ons-page>
+				<div class="profile-pic">
+					<img src="img/splitter-menu.png">
+				</div>
+				<div class="center"><p>Indonesia Kita</p></div>
+				<ons-list>
+					<ons-list-item onclick="fn.load('sejarah.html')" tappable>
+						<div class="left">
+							<ons-icon fixed-width class="list-item__icon" icon="ion-ionic"></ons-icon>
+						</div>
+						<div class="center">Sejarah</div>
+					</ons-list-item>
+					<ons-list-item onclick="fn.load('demogeografis.html')" tappable>
+						<div class="left">
+							<ons-icon fixed-width class="list-item__icon" icon="ion-android-map"></ons-icon>
+						</div>
+						<div class="center">Demo Geografis</div>
+					</ons-list-item>
+				</ons-list>
+
+				<style>
+				.profile-pic {
+					width: 90px;
+					margin-top: 50px;
+					margin-bottom: 5px;
+					margin-left: 20px;
+					background-color: transparent;
+				}
+				div .center {
+					font-size: 12px;
+				}
+				.profile-pic > img {
+					display: block;
+					max-width: 100%;
+					margin-bottom: 5px;
+				}
+				.center > p {
+					word-spacing: none;
+					margin-top: 0px;
+					margin-left: 5px;
+					margin-bottom: 10px;
+					font-size: 12px;
+					margin-left: 20px;
+				}	
+				ons-list-item {
+					color: #444;
+				}
+			</style>
+			<ons-list>
+				<div class="center"><p>info</p></div>
+				<ons-list-item onclick="fn.load('info.html')" tappable>
+					<div class="left">
+						<ons-icon fixed-width class="list-item__icon" icon="ion-information-circled"></ons-icon>
+					</div>
+					<div class="center">info</div>
+				</ons-list-item>
+
+					
+				<ons-list-item tappable modifier="longdivider" onclick="exitFromApp()">
+					<div class="left">
+						<ons-icon fixed-width class="list-item__icon" icon="ion-log-out"></ons-icon>
+					</div>
+			        <div class="center">
+			          Keluar
+			        </div>
+				</ons-list-item>
+			</ons-list>
+		</ons-page>
+	</ons-splitter-side>
+	<ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+</ons-splitter>
+</ons-navigtor>
+
+<template id="home.html">
+	<ons-page>
+		<ons-toolbar style="background-color:red;">
+			<div class="left">
+				<ons-toolbar-button onclick="fn.open()">
+					<ons-icon icon="ion-navicon" style="color:white;"></ons-icon>
+				</ons-toolbar-button>
+			</div>
+			<div class="center" style="color:white;">
+				Indonesia Kita
+			</div>
+		</ons-toolbar>
+		<img src="img/garuda.png" >
+		<p>Selamat Datang di Indonesia Kit. Disini anda akan belajar untuk menjadi
+		orang Indonesia yang 'benar-benar' Indonesia</p>
+
+		<style type="text/css">
+		img {
+			display: block;
+			width: 200px; 
+			margin-left: auto; 
+			margin-right: auto;
+			margin-bottom: 50px;
+			margin-top: 40px;
+		}
+		p {
+			font-size: 14;
+			text-align: justify;
+			margin-left: 20px; 
+			margin-right: 20px;
+		}
+	</style>
+</ons-page>
+</template>
+
+<template id="sejarah.html">
+	<ons-page>
+		<ons-toolbar style="background-color:red;">
+			<div class="left">
+				<ons-toolbar-button onclick="fn.open()">
+					<ons-icon icon="ion-navicon" style="color:white;"></ons-icon>
+				</ons-toolbar-button>
+			</div>
+			<div class="center" style="color:white;">
+				Sejarah
+			</div>
+		</ons-toolbar>
+	</ons-page>
+</template>
+
+<template id="demogeografis.html">
+	<ons-page>
+		<ons-toolbar style="background-color:red;">
+			<div class="left">
+				<ons-toolbar-button onclick="fn.open()">
+					<ons-icon icon="ion-navicon" style="color:white;"></ons-icon>
+				</ons-toolbar-button>
+			</div>
+			<div class="center" style="color:white;">
+				Demo Geografis
+			</div>
+		</ons-toolbar>
+	</ons-page>
+</template>
+
+<template id="info.html">
+	<ons-page>
+		<ons-toolbar style="background-color:red;">
+			<div class="left">
+				<ons-toolbar-button onclick="fn.open()">
+					<ons-icon icon="ion-navicon" style="color:white;"></ons-icon>
+				</ons-toolbar-button>
+			</div>
+			<div class="center" style="color:white;">
+				Info
+			</div>
+		</ons-toolbar>
+	</ons-page>
+</template>
+
+<script type="text/javascript">
+	window.fn = {};
+
+	window.fn.open = function() {
+		var menu = document.getElementById('menu');
+		menu.open();
+	};
+
+	window.fn.load = function(page) {
+		var content = document.getElementById('content');
+		var menu = document.getElementById('menu');
+		content.load(page)
+		.then(menu.close.bind(menu));
+	};
+	function exitFromApp() {
+		navigator.app.exitApp();
+	}
+</script>
+
+</body>
+</html>
